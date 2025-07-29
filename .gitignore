@@ -1,0 +1,22 @@
+# Environment variable file
+.env
+
+# Node dependencies
+node_modules/
+
+# OS system files
+.DS_Store
+
+# REST client testing files
+request.rest
+
+# Log files
+*.log
+
+# Build artifacts 
+dist/
+build/
+
+# ignore frontend testing HTML files
+public/signup.html
+public/login.html
