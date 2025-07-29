@@ -11,18 +11,17 @@ This project is a simple authentication system built with Node.js, Express, and 
 
 ## Project Structure
 ```
-server/
-  auth.js            # Authentication logic
-  authRouter.js      # Express router for auth endpoints
-  server.js          # Main server entry point
-  package.json       # Server dependencies
-  request.rest       # REST client requests for testing
-  config/
-    mongo.js         # MongoDB connection setup
-  middleware/
-    userauth.js      # Middleware for user authentication
-  model/
-    usermodel.js     # Mongoose user schema/model
+auth.js            # Authentication logic
+authRouter.js      # Express router for auth endpoints
+server.js          # Main server entry point
+package.json       # Server dependencies
+request.rest       # REST client requests for testing
+config/
+  mongo.js         # MongoDB connection setup
+middleware/
+  userauth.js      # Middleware for user authentication
+model/
+  usermodel.js     # Mongoose user schema/model
 ```
 
 ## Getting Started
@@ -34,19 +33,19 @@ server/
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone <repo-url>
-   cd Login/server
+   git clone https://github.com/riyaziya34/auth-api-backend.git
+   cd auth-api-backend
    ```
 2. Install dependencies:
    ```sh
    npm install
    ```
-3. Set up your MongoDB connection string in `server/config/mongo.js`.
+3. Set up your MongoDB connection string in `config/mongo.js` (or use an environment variable if supported).
 4. Start the server:
    ```sh
    node server.js
    ```
-5. Open `public/signup.html` or `public/login.html` in your browser.
+5. The frontend (login/signup pages) is not included in this repository. You can use API endpoints with your own frontend or API client (like Postman).
 
 ## API Endpoints
 - `POST /api/auth/register` — Register a new user

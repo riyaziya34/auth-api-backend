@@ -17,6 +17,3 @@ request.rest
 dist/
 build/
 
-# ignore frontend testing HTML files
-public/signup.html
-public/login.html
