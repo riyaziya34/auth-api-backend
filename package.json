@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
-    "format": "prettier --write ."
+     "pretty": "prettier --write \".//*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "keywords": [],
   "author": "",
