@@ -13,8 +13,10 @@ app.use(express.json());
 app.use("/api/auth", require("./authRouter.js"));
 app.use(
   cors({
-    origin: true, 
-    credentials: true, 
+    origin: (origin, callback) => {
+      callback(null, true);
+    },
+    credentials: true,
   })
 );
 connectDB();
