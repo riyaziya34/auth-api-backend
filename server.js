@@ -9,17 +9,21 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "../public")));
 dotenv.config();
 app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
 app.use("/api/auth", require("./authRouter.js"));
 const users = [];
 connectDB();
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
+app.options("*", cors());
 
-app.get("/users", (req, res) => {
+app.get("/users/:id", (req, res) => {
   res.send(users);
 });
 
-app.post("/users", async (req, res) => {
+app.post("/users/:id", async (req, res) => {
   try {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -36,7 +40,7 @@ app.post("/users", async (req, res) => {
     res.status(500).send();
   }
 });
-app.post("/users/Login", async (req, res) => {
+app.post("/users/Login/:id", async (req, res) => {
   const user = users.find((user) => user.email == req.body.email);
   if (user == null) {
     return res.status(400).send("Cannot find user");
