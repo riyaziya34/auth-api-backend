@@ -6,20 +6,32 @@ const connectDB = require("./config/mongo.js");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const path = require("path");
-app.use(express.static(path.join(__dirname, "../public")));
 dotenv.config();
-app.use(cookieParser());
-app.use(express.json());
-app.use("/api/auth", require("./authRouter.js"));
-app.use(
-  cors({
-    origin: (origin, callback) => {
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://127.0.0.1:5501",
+  "http://127.0.0.1:5500",
+  "https://riyaziya34.github.io/Netflix-Ui-Clone/git"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); 
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
-    },
-    credentials: true,
-  })
-);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "../public")));
+
 connectDB();
+app.use("/api/auth", require("./authRouter.js"));
 
 
 // app.get("/users/:id", (req, res) => {
