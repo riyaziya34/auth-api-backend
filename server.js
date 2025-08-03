@@ -12,7 +12,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:5501",
   "http://127.0.0.1:5500",
-  "https://riyaziya34.github.io/Netflix-Ui-Clone/git"
+  "https://riyaziya34.github.io"
 ];
 
 app.use(cors({
